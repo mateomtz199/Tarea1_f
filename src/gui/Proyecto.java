@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -48,7 +49,13 @@ public class Proyecto extends javax.swing.JFrame {
         validarNombre = new javax.swing.JLabel();
         lblValidarApP = new javax.swing.JLabel();
         lblValidarApM = new javax.swing.JLabel();
-        fecha_nacimiento = new com.toedter.calendar.JDateChooser();
+        txtFecha_nacimiento = new com.toedter.calendar.JDateChooser();
+        lblValidarEdad = new javax.swing.JLabel();
+        lblValidarNacimiento = new javax.swing.JLabel();
+        lblValidarCurp = new javax.swing.JLabel();
+        lblValidarSexo = new javax.swing.JLabel();
+        lblValidarUsuario = new javax.swing.JLabel();
+        lblValidarContrasenia = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
@@ -184,6 +191,18 @@ public class Proyecto extends javax.swing.JFrame {
             }
         });
 
+        lblValidarEdad.setText("jLabel18");
+
+        lblValidarNacimiento.setText("jLabel18");
+
+        lblValidarCurp.setText("jLabel18");
+
+        lblValidarSexo.setText("jLabel18");
+
+        lblValidarUsuario.setText("jLabel18");
+
+        lblValidarContrasenia.setText("jLabel18");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -206,7 +225,8 @@ public class Proyecto extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txtNombre)
-                                            .addComponent(txtCURP, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                                            .addComponent(txtCURP, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                            .addComponent(lblValidarCurp, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
@@ -218,18 +238,25 @@ public class Proyecto extends javax.swing.JFrame {
                                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                                                     .addComponent(jLabel8)
                                                                     .addGap(16, 16, 16)
-                                                                    .addComponent(rbtnMasculino)
-                                                                    .addGap(18, 18, 18)
-                                                                    .addComponent(rbtnMasculona))
+                                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(lblValidarSexo)
+                                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                            .addComponent(rbtnMasculino)
+                                                                            .addGap(18, 18, 18)
+                                                                            .addComponent(rbtnMasculona))))
                                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                                                     .addComponent(jLabel9)
                                                                     .addGap(18, 18, 18)
-                                                                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(lblValidarContrasenia)
+                                                                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                                         .addGap(0, 0, Short.MAX_VALUE))
                                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                                         .addComponent(jLabel7)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(fecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(lblValidarNacimiento)
+                                                            .addComponent(txtFecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGap(180, 180, 180))))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
@@ -248,14 +275,18 @@ public class Proyecto extends javax.swing.JFrame {
                                                         .addGap(0, 0, Short.MAX_VALUE))
                                                     .addComponent(txtApM)))))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(validarNombre)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(validarNombre)
+                                            .addComponent(lblValidarEdad))
                                         .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1)
                         .addGap(10, 10, 10)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblValidarUsuario)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -281,23 +312,36 @@ public class Proyecto extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addGap(21, 21, 21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblValidarEdad)
+                        .addGap(1, 1, 1)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel8)
                             .addComponent(txtCURP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rbtnMasculino)
                             .addComponent(rbtnMasculona))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblValidarCurp)
+                            .addComponent(lblValidarSexo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
                             .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblValidarUsuario)
+                            .addComponent(lblValidarContrasenia))
+                        .addGap(8, 8, 8)
                         .addComponent(jButton1))
-                    .addComponent(fecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtFecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblValidarNacimiento)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Datos", jPanel2);
@@ -377,7 +421,7 @@ public class Proyecto extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,7 +478,7 @@ public class Proyecto extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(478, Short.MAX_VALUE)
+                .addContainerGap(480, Short.MAX_VALUE)
                 .addComponent(jPanelWebCam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
         );
@@ -540,11 +584,8 @@ public class Proyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnMasculinoMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(validarUsuario(txtUsuario.getText())){
-            System.out.println("usuario invalido");
-        }else{
-            System.out.println("usuario valido");
-        }
+        if(validarVacios()) System.out.println("Vacio");
+        else System.out.println("Nada seleccionado");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNombreInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtNombreInputMethodTextChanged
@@ -591,8 +632,48 @@ public class Proyecto extends javax.swing.JFrame {
         else if(cadena.matches("[A-Z][a-z]*")) lblModificar.setText("Correcto");
     }
     private boolean validarUsuario(String cadena){
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).$";
+        return !cadena.matches(regex);
+    }
+    private boolean validarContraseña(String cadena){
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
         return !cadena.matches(regex);
+    }
+    private boolean validarSexo(){
+        if(!rbtnMasculino.isSelected() || !rbtnMasculona.isSelected()){
+            lblValidarSexo.setForeground(Color.red);
+            lblValidarSexo.setText("Selecciona un sexo");
+            return false;
+        }
+        return true;
+    }
+    private boolean validarCamposVacios(String valorCampo, JLabel componente){
+        boolean bandera = false;
+        componente.setForeground(Color.red);
+        if(txtNombre.getText().equals("")){
+            componente.setText("No puede estar vacio");
+            bandera = false;
+        }else{
+            componente.setText("");
+            bandera = true;
+        }
+        return bandera;
+    }
+    private boolean validarVacios(){
+        boolean bandera = false;
+        if(validarCamposVacios(txtNombre.getText(), validarNombre)
+                || validarCamposVacios(txtApP.getText(), lblValidarApP)
+                || validarCamposVacios(txtApM.getText(), lblValidarApM)
+                || validarCamposVacios(txtCURP.getText(), lblValidarCurp)
+                || validarCamposVacios(txtEdad.getText(), lblValidarEdad)
+                //&& validarCamposVacios(txtFecha_nacimiento.getDate().toString(), lblValidarNacimiento)
+                || validarCamposVacios(txtUsuario.getText(), lblValidarUsuario)
+                || validarCamposVacios(txtPass.getText(), lblValidarContrasenia)
+                || validarSexo()){
+            System.out.println("Hay campos vacios");
+            
+        }
+        return bandera;
     }
     /**
      * @param args the command line arguments
@@ -633,7 +714,6 @@ public class Proyecto extends javax.swing.JFrame {
     public static javax.swing.ButtonGroup Sexo;
     private com.toedter.calendar.JDateChooser fechaRegistro;
     private com.toedter.calendar.JDateChooser fechaVencimiento;
-    private com.toedter.calendar.JDateChooser fecha_nacimiento;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -669,12 +749,19 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblValidarApM;
     private javax.swing.JLabel lblValidarApP;
+    private javax.swing.JLabel lblValidarContrasenia;
+    private javax.swing.JLabel lblValidarCurp;
+    private javax.swing.JLabel lblValidarEdad;
+    private javax.swing.JLabel lblValidarNacimiento;
+    private javax.swing.JLabel lblValidarSexo;
+    private javax.swing.JLabel lblValidarUsuario;
     private javax.swing.JRadioButton rbtnMasculino;
     private javax.swing.JRadioButton rbtnMasculona;
     private javax.swing.JTextField txtApM;
     private javax.swing.JTextField txtApP;
     private javax.swing.JTextField txtCURP;
     private javax.swing.JTextField txtEdad;
+    private com.toedter.calendar.JDateChooser txtFecha_nacimiento;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUsuario;
