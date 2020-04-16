@@ -584,8 +584,30 @@ public class Proyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnMasculinoMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(validarVacios()) System.out.println("Vacio");
-        else System.out.println("Nada seleccionado");
+        validarSexo();
+        validarCurp();
+        validarUsuario();
+        isValidoNombres(txtNombre.getText(), validarNombre);
+        isValidoNombres(txtApP.getText(), lblValidarApP);
+        isValidoNombres(txtApM.getText(), lblValidarApM);
+        validarContraseña();
+        validarFecha();
+        validarEdad();
+        if(validarSexo() 
+                && validarCurp()
+                && validarUsuario()
+                && isValidoNombres(txtNombre.getText(), validarNombre)
+                && isValidoNombres(txtApP.getText(), lblValidarApP)
+                && isValidoNombres(txtApM.getText(), lblValidarApM)
+                && validarContraseña()
+                && validarFecha()
+                && validarEdad()) {
+            
+            
+            System.out.println("Todo bien");
+            jTabbedPane2.setEnabledAt(1, true);
+        }
+        else System.out.println("Error");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNombreInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtNombreInputMethodTextChanged
@@ -617,48 +639,137 @@ public class Proyecto extends javax.swing.JFrame {
             "[0-9A-Z]{1}[0-9]{1}$";
         String curp = txtCURP.getText();
         Pattern patron = Pattern.compile(regex);
-        if(!patron.matcher(curp).matches())
+        if(curp.equals("")){
+            lblValidarCurp.setForeground(Color.red);
+            lblValidarCurp.setText("Debe llenar este campo");
             return false;
-        else
-            return true;
+        }
+        else{
+            lblValidarCurp.setText("");
+            if(!patron.matcher(curp).matches()){
+                 lblValidarCurp.setText("Debe introducir CURP valido");
+                return false;
+            }
+            else{
+                lblValidarCurp.setText("");
+                return true;
+            }
+        }
     }
-    private void isValidoNombres(String cadena, JLabel lblModificar){
-        if(!cadena.matches("[A-Z].*")) lblModificar.setText("Se debe iniciar con Mayuscula");
-        else if(!cadena.matches("[^0-9]*")) lblModificar.setText("No debe incluir numeros el nombre");
-        else if(!cadena.matches("[A-Z][a-z]*")) lblModificar.setText("La primera letra solamente debe ser mayuscula, "
+    private boolean isValidoNombres(String cadena, JLabel lblModificar){
+        if(cadena.equals("")){
+            lblModificar.setForeground(Color.red);
+            lblModificar.setText("Debe llenar este campo");
+            return false;
+        }
+        else if(!cadena.matches("[A-Z].*")) {
+            lblModificar.setForeground(Color.red);
+            lblModificar.setText("Se debe iniciar con Mayuscula");
+            return false;
+        }
+        else if(!cadena.matches("[^0-9]*")) {
+            lblModificar.setForeground(Color.red);
+            lblModificar.setText("No debe incluir numeros el nombre");
+            return false;
+        }
+        else if(!cadena.matches("[A-Z][a-z]*")) {
+            lblModificar.setForeground(Color.red);
+            lblModificar.setText("La primera letra solamente debe ser mayuscula, "
                 + "los demas deben de ser minusculas");
-        else if(cadena.matches("[A-Z].*")) lblModificar.setText("Correcto");
-        else if(cadena.matches("[^0-9]*")) lblModificar.setText("Correcto");
-        else if(cadena.matches("[A-Z][a-z]*")) lblModificar.setText("Correcto");
+            return false;
+        }
+        else if(!cadena.equals("")){
+            lblModificar.setText("");
+            return  true;
+        }
+        else if(cadena.matches("[A-Z].*")) {
+            lblModificar.setText("");
+            return  true;
+        }
+        else if(cadena.matches("[^0-9]*")) {
+            lblModificar.setText("");
+            return  true;
+        }
+        else if(cadena.matches("[A-Z][a-z]*")) {
+            lblModificar.setText("");
+            return  true;
+        }
+        return  true;
     }
-    private boolean validarUsuario(String cadena){
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).$";
-        return !cadena.matches(regex);
+    private boolean validarEdad(){
+        if(txtEdad.getText().equals("")){
+            lblValidarEdad.setForeground(Color.red);
+            lblValidarEdad.setText("Necesita llenar este campo");
+            return false;
+        }else{
+            //Edad valido > 18 y < 120
+            lblValidarEdad.setText("");
+            return true;
+        }
     }
-    private boolean validarContraseña(String cadena){
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-        return !cadena.matches(regex);
+    private boolean validarUsuario(){
+        String cadena = txtUsuario.getText();
+        String regex = "^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{3,}$";
+        if(cadena.equals("")){
+            lblValidarUsuario.setForeground(Color.red);
+            lblValidarUsuario.setText("Debe introducir un nombre de usuario");
+            return false;
+        }else{
+            lblValidarUsuario.setText("");
+            if(!cadena.matches(regex)){
+                lblValidarUsuario.setForeground(Color.red);
+                lblValidarUsuario.setText("El usuario debe contener mayusculas \n minusculas y numeros");
+                return false;
+            }else{
+                lblValidarUsuario.setText("");
+                return true;
+            }
+        }
+    }
+    private boolean validarContraseña(){
+        String regex = "^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,}$";
+        String cadena =txtPass.getText();
+        if(cadena.equals("")){
+            lblValidarContrasenia.setForeground(Color.red);
+            lblValidarContrasenia.setText("Debe llenar este campo");
+            return false;
+        }else{
+            lblValidarContrasenia.setText("");
+            if(!cadena.matches(regex)){
+                lblValidarContrasenia.setForeground(Color.red);
+                lblValidarContrasenia.setText("La contraseña debe contener mayusculas \n minusculas y numeros y mayor a 8 caracteres");
+                return false;
+            }
+            else{
+                lblValidarContrasenia.setText("");
+                return true;
+            }
+        }
     }
     private boolean validarSexo(){
-        if(!rbtnMasculino.isSelected() || !rbtnMasculona.isSelected()){
+        if(!rbtnMasculino.isSelected() && !rbtnMasculona.isSelected()){
             lblValidarSexo.setForeground(Color.red);
             lblValidarSexo.setText("Selecciona un sexo");
             return false;
-        }
-        return true;
-    }
-    private boolean validarCamposVacios(String valorCampo, JLabel componente){
-        boolean bandera = false;
-        componente.setForeground(Color.red);
-        if(txtNombre.getText().equals("")){
-            componente.setText("No puede estar vacio");
-            bandera = false;
         }else{
-            componente.setText("");
-            bandera = true;
+            lblValidarSexo.setText("");
+            return true;
         }
-        return bandera;
     }
+    private boolean validarFecha(){
+        if(txtFecha_nacimiento.getDate()==null){
+            lblValidarNacimiento.setForeground(Color.red);
+            lblValidarNacimiento.setText("Selecciona una fecha de nacimiento plis!");
+            return false;
+        }else{
+            lblValidarNacimiento.setText("");
+            return true;
+        }
+    }
+    private void desctivarCamposDatos(){
+        txtNombre.disable();
+    }
+    /*
     private boolean validarVacios(){
         boolean bandera = false;
         if(validarCamposVacios(txtNombre.getText(), validarNombre)
@@ -675,6 +786,7 @@ public class Proyecto extends javax.swing.JFrame {
         }
         return bandera;
     }
+    */
     /**
      * @param args the command line arguments
      */
