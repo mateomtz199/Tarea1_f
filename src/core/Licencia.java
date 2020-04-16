@@ -16,6 +16,21 @@ public class Licencia extends Persona{
     private String telefono;
     private String observaciones;
 
+    public Licencia() {
+    }
+    
+    public Licencia(String NoControl, String tipoLicencia, Date fechaRegistro, Date fechaVencimiento, int vigencia, String telEmergencia, String telefono, String observaciones) {
+        this.NoControl = NoControl;
+        this.tipoLicencia = tipoLicencia;
+        this.fechaRegistro = fechaRegistro;
+        this.fechaVencimiento = fechaVencimiento;
+        this.vigencia = vigencia;
+        this.telEmergencia = telEmergencia;
+        this.telefono = telefono;
+        this.observaciones = observaciones;
+    }
+    
+    
     public void setNoControl(String NoControl) {
         this.NoControl = NoControl;
     }

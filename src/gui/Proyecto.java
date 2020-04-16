@@ -1,5 +1,6 @@
 package gui;
 
+import core.Licencia;
 import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
@@ -8,7 +9,7 @@ import javax.swing.JLabel;
 
 
 public class Proyecto extends javax.swing.JFrame {
-
+    Licencia objLicencia;
     public Proyecto() {
         initComponents();
         jTabbedPane2.setEnabledAt(1, false);
@@ -45,7 +46,7 @@ public class Proyecto extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtApM = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        guardarDatos = new javax.swing.JButton();
         validarNombre = new javax.swing.JLabel();
         lblValidarApP = new javax.swing.JLabel();
         lblValidarApM = new javax.swing.JLabel();
@@ -75,6 +76,7 @@ public class Proyecto extends javax.swing.JFrame {
         fechaVencimiento = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         jPanelWebCam1 = new JPanelWebCam.JPanelWebCam();
+        jPanel5 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -105,22 +107,9 @@ public class Proyecto extends javax.swing.JFrame {
         jLabel1.setText("Usuario:");
 
         txtNombre.setName("txtNombre"); // NOI18N
-        txtNombre.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txtNombreInputMethodTextChanged(evt);
-            }
-        });
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNombreKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNombreKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
             }
         });
 
@@ -158,11 +147,6 @@ public class Proyecto extends javax.swing.JFrame {
 
         Sexo.add(rbtnMasculino);
         rbtnMasculino.setText("M");
-        rbtnMasculino.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rbtnMasculinoMouseClicked(evt);
-            }
-        });
 
         Sexo.add(rbtnMasculona);
         rbtnMasculona.setText("F");
@@ -183,11 +167,11 @@ public class Proyecto extends javax.swing.JFrame {
 
         txtPass.setName("pwrUsuario"); // NOI18N
 
-        jButton1.setText("Guardar");
-        jButton1.setName("btnGuardar"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        guardarDatos.setText("Guardar");
+        guardarDatos.setName("btnGuardar"); // NOI18N
+        guardarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                guardarDatosActionPerformed(evt);
             }
         });
 
@@ -233,7 +217,7 @@ public class Proyecto extends javax.swing.JFrame {
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(guardarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                                                     .addComponent(jLabel8)
@@ -336,7 +320,7 @@ public class Proyecto extends javax.swing.JFrame {
                             .addComponent(lblValidarUsuario)
                             .addComponent(lblValidarContrasenia))
                         .addGap(8, 8, 8)
-                        .addComponent(jButton1))
+                        .addComponent(guardarDatos))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtFecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -473,21 +457,41 @@ public class Proyecto extends javax.swing.JFrame {
             .addGap(0, 155, Short.MAX_VALUE)
         );
 
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 415, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 206, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(480, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jPanelWebCam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jPanelWebCam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jPanelWebCam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Captura de Foto", jPanel4);
@@ -519,15 +523,6 @@ public class Proyecto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        // TODO add your handling code here:
-        char validar =evt.getKeyChar();
-        if(Character.isDigit(validar)){
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApPKeyTyped
         // TODO add your handling code here:
@@ -578,12 +573,7 @@ public class Proyecto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField12KeyTyped
 
-    private void rbtnMasculinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnMasculinoMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_rbtnMasculinoMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void guardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarDatosActionPerformed
         validarSexo();
         validarCurp();
         validarUsuario();
@@ -603,24 +593,28 @@ public class Proyecto extends javax.swing.JFrame {
                 && validarFecha()
                 && validarEdad()) {
             
+            //Crea el objeto y asigna datos
+            objLicencia= new Licencia();
+            objLicencia.setNombre(txtNombre.getText());
+            objLicencia.setApellidoPaterno(txtApP.getText());
+            objLicencia.setApellidoMaterno(txtApM.getText());
+            objLicencia.setEdad(Integer.parseInt(txtEdad.getText()));
+            //Nacimiento
+            objLicencia.setCURP(txtCURP.getText());
+            objLicencia.setSexo(obtenerSexo());
+            objLicencia.setUsuario(txtUsuario.getText());
+            objLicencia.setContraseña(txtPass.getText());
+            
             
             System.out.println("Todo bien");
             jTabbedPane2.setEnabledAt(1, true);
         }
         else System.out.println("Error");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtNombreInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtNombreInputMethodTextChanged
-        
-    }//GEN-LAST:event_txtNombreInputMethodTextChanged
+    }//GEN-LAST:event_guardarDatosActionPerformed
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
         isValidoNombres(txtNombre.getText(), validarNombre);
     }//GEN-LAST:event_txtNombreKeyReleased
-
-    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
-        
-    }//GEN-LAST:event_txtNombreKeyPressed
 
     private void txtApPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApPKeyReleased
         isValidoNombres(txtApP.getText(), lblValidarApP);
@@ -769,6 +763,10 @@ public class Proyecto extends javax.swing.JFrame {
     private void desctivarCamposDatos(){
         txtNombre.disable();
     }
+    private String obtenerSexo(){
+        if(rbtnMasculino.isSelected()) return "M";
+        else return "F";
+    }
     /*
     private boolean validarVacios(){
         boolean bandera = false;
@@ -826,7 +824,7 @@ public class Proyecto extends javax.swing.JFrame {
     public static javax.swing.ButtonGroup Sexo;
     private com.toedter.calendar.JDateChooser fechaRegistro;
     private com.toedter.calendar.JDateChooser fechaVencimiento;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton guardarDatos;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -853,6 +851,7 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private JPanelWebCam.JPanelWebCam jPanelWebCam1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField12;
