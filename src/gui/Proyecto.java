@@ -3,6 +3,12 @@ package gui;
 import core.Licencia;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -13,7 +19,11 @@ public class Proyecto extends javax.swing.JFrame {
     Licencia objLicencia;
     public Proyecto() {
         initComponents();
-        jTabbedPane2.setEnabledAt(1, false);
+        PropertyChange();
+        eventosjcbVigencia();
+        Calendar c1 = Calendar.getInstance();
+        fechaRegistro.setCalendar(c1);
+        //jTabbedPane2.setEnabledAt(1, false);
     }
 
     /**
@@ -65,7 +75,7 @@ public class Proyecto extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<String>();
+        jcbVigencia = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
@@ -75,6 +85,7 @@ public class Proyecto extends javax.swing.JFrame {
         jTextField14 = new javax.swing.JTextField();
         fechaRegistro = new com.toedter.calendar.JDateChooser();
         fechaVencimiento = new com.toedter.calendar.JDateChooser();
+        btnGuardarLicencia = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         panelCamara = new JPanelWebCam.JPanelWebCam();
         jPanel5 = new javax.swing.JPanel();
@@ -343,7 +354,7 @@ public class Proyecto extends javax.swing.JFrame {
                         .addComponent(txtFecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblValidarNacimiento)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Datos", jPanel2);
@@ -358,7 +369,7 @@ public class Proyecto extends javax.swing.JFrame {
 
         jLabel13.setText("Vigencia:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "3", "5" }));
+        jcbVigencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "3", "5" }));
 
         jLabel14.setText("Vencimiento:");
 
@@ -380,49 +391,60 @@ public class Proyecto extends javax.swing.JFrame {
 
         jLabel17.setText("Observaciones:");
 
+        fechaVencimiento.setEnabled(false);
+
+        btnGuardarLicencia.setText("Guardar");
+        btnGuardarLicencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarLicenciaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                    .addComponent(fechaVencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel11)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel15))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField12)
-                            .addComponent(jTextField13)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGuardarLicencia)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel12)
+                                        .addComponent(jLabel14))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(fechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                                        .addComponent(fechaVencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11)))
+                            .addGap(7, 7, 7)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jcbVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel16)
+                                .addComponent(jLabel15))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField12)
+                                .addComponent(jTextField13)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jLabel17)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(346, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -439,7 +461,7 @@ public class Proyecto extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
                         .addComponent(jLabel13)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcbVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(fechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -457,7 +479,9 @@ public class Proyecto extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
                     .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnGuardarLicencia)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Licencia", jPanel3);
@@ -489,16 +513,28 @@ public class Proyecto extends javax.swing.JFrame {
 
         lblUsuario.setText("Usuario:");
 
+        dlblNombreD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblNombreD.setForeground(new java.awt.Color(255, 0, 0));
         dlblNombreD.setText("jLabel18");
 
+        dlblNacimientoD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblNacimientoD.setForeground(new java.awt.Color(255, 0, 0));
         dlblNacimientoD.setText("jLabel18");
 
+        dlblEdadD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblEdadD.setForeground(new java.awt.Color(255, 0, 0));
         dlblEdadD.setText("jLabel18");
 
+        dlblCURPD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblCURPD.setForeground(new java.awt.Color(255, 0, 0));
         dlblCURPD.setText("jLabel18");
 
+        dlblSexoD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblSexoD.setForeground(new java.awt.Color(255, 0, 0));
         dlblSexoD.setText("jLabel19");
 
+        dlblUsuarioD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblUsuarioD.setForeground(new java.awt.Color(255, 0, 0));
         dlblUsuarioD.setText("jLabel19");
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -580,7 +616,7 @@ public class Proyecto extends javax.swing.JFrame {
                             .addComponent(lblUsuario)
                             .addComponent(dlblUsuarioD))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
                 .addGap(89, 89, 89))
         );
 
@@ -621,7 +657,7 @@ public class Proyecto extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(lblIndicacion)
-                                        .addGap(0, 74, Short.MAX_VALUE))
+                                        .addGap(0, 66, Short.MAX_VALUE))
                                     .addComponent(panelCamara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -638,7 +674,7 @@ public class Proyecto extends javax.swing.JFrame {
                         .addComponent(panelCamara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnTomarFoto)
-                        .addGap(0, 7, Short.MAX_VALUE))))
+                        .addGap(0, 47, Short.MAX_VALUE))))
         );
 
         jTabbedPane2.addTab("Captura de Foto", jPanel4);
@@ -664,8 +700,8 @@ public class Proyecto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -746,7 +782,7 @@ public class Proyecto extends javax.swing.JFrame {
             objLicencia.setApellidoPaterno(txtApP.getText());
             objLicencia.setApellidoMaterno(txtApM.getText());
             objLicencia.setEdad(Integer.parseInt(txtEdad.getText()));
-            //Nacimiento
+            objLicencia.setNacimiento(txtFecha_nacimiento.getDate());
             objLicencia.setCURP(txtCURP.getText());
             objLicencia.setSexo(obtenerSexo());
             objLicencia.setUsuario(txtUsuario.getText());
@@ -777,7 +813,56 @@ public class Proyecto extends javax.swing.JFrame {
         ImageIcon fotoIcon = new ImageIcon(foto.getScaledInstance(140, 135, Image.SCALE_SMOOTH));
         lblFoto.setIcon(fotoIcon);
     }//GEN-LAST:event_btnTomarFotoActionPerformed
-    
+
+    private void btnGuardarLicenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLicenciaActionPerformed
+        System.out.println("JijijijiLicencia");
+    }//GEN-LAST:event_btnGuardarLicenciaActionPerformed
+    private void eventosjcbVigencia(){
+        jcbVigencia.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                int seleccionado = jcbVigencia.getSelectedIndex();
+                if(seleccionado == 1){
+                    fechaVencimiento.setCalendar(calcularVencimiento(3));
+                }else if(seleccionado == 2){
+                    fechaVencimiento.setCalendar(calcularVencimiento(5));
+                }else{
+                    Calendar prueba = fechaRegistro.getCalendar();
+                    fechaVencimiento.setCalendar(calcularVencimiento(1));
+                }
+            }
+        });
+    }
+    private Calendar calcularVencimiento( int anios){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, anios);
+        return cal;
+    }
+    private void PropertyChange() {
+        txtFecha_nacimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                Date fechaNacimiento = txtFecha_nacimiento.getDate();
+                Calendar fecha = dateToCalendar(fechaNacimiento);
+                txtEdad.setText("" + calculaEdad(fecha));
+            }
+        });
+    }
+    private Calendar dateToCalendar(Date date) {
+	Calendar calendar = Calendar.getInstance();
+	calendar.setTime(date);
+	return calendar;
+    }
+    private int calculaEdad(Calendar fechaNac) {
+        Calendar today = Calendar.getInstance();
+        int diff_year = today.get(Calendar.YEAR) -  fechaNac.get(Calendar.YEAR);
+        int diff_month = today.get(Calendar.MONTH) - fechaNac.get(Calendar.MONTH);
+        int diff_day = today.get(Calendar.DAY_OF_MONTH) - fechaNac.get(Calendar.DAY_OF_MONTH);
+        //Si está en ese año pero todavía no los ha cumplido
+        if (diff_month < 0 || (diff_month == 0 && diff_day < 0)) {
+            diff_year = diff_year - 1; //no aparecían los dos guiones del postincremento :|
+        }
+        return diff_year;
+    }
     private boolean validarCurp(){
         String regex = "[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}" +
             "(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])" +
@@ -928,6 +1013,8 @@ public class Proyecto extends javax.swing.JFrame {
         dlblCURPD.setText(objLicencia.getCURP());
         dlblSexoD.setText(objLicencia.getSexo());
         dlblUsuarioD.setText(objLicencia.getUsuario());
+        DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        dlblNacimientoD.setText(f.format(objLicencia.getNacimiento()));
     }
     
     /*
@@ -985,6 +1072,7 @@ public class Proyecto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.ButtonGroup Sexo;
+    private javax.swing.JButton btnGuardarLicencia;
     private javax.swing.JButton btnTomarFoto;
     private javax.swing.JLabel dlblCURPD;
     private javax.swing.JLabel dlblEdadD;
@@ -996,7 +1084,6 @@ public class Proyecto extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser fechaVencimiento;
     private javax.swing.JButton guardarDatos;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1028,6 +1115,7 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox<String> jcbVigencia;
     private javax.swing.JLabel lblCURPD;
     private javax.swing.JLabel lblEdadD;
     private javax.swing.JLabel lblFoto;
