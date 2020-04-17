@@ -2,6 +2,7 @@ package gui;
 
 import core.Licencia;
 import java.awt.Color;
+import java.awt.Image;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -75,8 +76,25 @@ public class Proyecto extends javax.swing.JFrame {
         fechaRegistro = new com.toedter.calendar.JDateChooser();
         fechaVencimiento = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
-        jPanelWebCam1 = new JPanelWebCam.JPanelWebCam();
+        panelCamara = new JPanelWebCam.JPanelWebCam();
         jPanel5 = new javax.swing.JPanel();
+        lblNombreD = new javax.swing.JLabel();
+        lblNacimientoD = new javax.swing.JLabel();
+        lblEdadD = new javax.swing.JLabel();
+        lblCURPD = new javax.swing.JLabel();
+        lblSexo = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        dlblNombreD = new javax.swing.JLabel();
+        dlblNacimientoD = new javax.swing.JLabel();
+        dlblEdadD = new javax.swing.JLabel();
+        dlblCURPD = new javax.swing.JLabel();
+        dlblSexoD = new javax.swing.JLabel();
+        dlblUsuarioD = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        lblFoto = new javax.swing.JLabel();
+        tituloCaptura = new javax.swing.JLabel();
+        btnTomarFoto = new javax.swing.JButton();
+        lblIndicacion = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -325,7 +343,7 @@ public class Proyecto extends javax.swing.JFrame {
                         .addComponent(txtFecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblValidarNacimiento)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Datos", jPanel2);
@@ -405,7 +423,7 @@ public class Proyecto extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,59 +457,188 @@ public class Proyecto extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
                     .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Licencia", jPanel3);
 
-        jPanelWebCam1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelCamara.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255), 3));
 
-        javax.swing.GroupLayout jPanelWebCam1Layout = new javax.swing.GroupLayout(jPanelWebCam1);
-        jPanelWebCam1.setLayout(jPanelWebCam1Layout);
-        jPanelWebCam1Layout.setHorizontalGroup(
-            jPanelWebCam1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 179, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelCamaraLayout = new javax.swing.GroupLayout(panelCamara);
+        panelCamara.setLayout(panelCamaraLayout);
+        panelCamaraLayout.setHorizontalGroup(
+            panelCamaraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanelWebCam1Layout.setVerticalGroup(
-            jPanelWebCam1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
+        panelCamaraLayout.setVerticalGroup(
+            panelCamaraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 212, Short.MAX_VALUE)
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+
+        lblNombreD.setText("Nombre completo:");
+
+        lblNacimientoD.setText("Fecha de nacimiento:");
+
+        lblEdadD.setText("Edad:");
+
+        lblCURPD.setText("CURP:");
+
+        lblSexo.setText("Sexo:");
+
+        lblUsuario.setText("Usuario:");
+
+        dlblNombreD.setText("jLabel18");
+
+        dlblNacimientoD.setText("jLabel18");
+
+        dlblEdadD.setText("jLabel18");
+
+        dlblCURPD.setText("jLabel18");
+
+        dlblSexoD.setText("jLabel19");
+
+        dlblUsuarioD.setText("jLabel19");
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setMaximumSize(new java.awt.Dimension(110, 130));
+        jPanel6.setPreferredSize(new java.awt.Dimension(100, 50));
+
+        lblFoto.setMaximumSize(new java.awt.Dimension(100, 100));
+        lblFoto.setMinimumSize(new java.awt.Dimension(100, 100));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 415, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombreD)
+                    .addComponent(lblNacimientoD)
+                    .addComponent(lblEdadD)
+                    .addComponent(lblCURPD)
+                    .addComponent(lblSexo)
+                    .addComponent(lblUsuario))
+                .addGap(54, 54, 54)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dlblUsuarioD)
+                    .addComponent(dlblSexoD)
+                    .addComponent(dlblCURPD)
+                    .addComponent(dlblEdadD)
+                    .addComponent(dlblNacimientoD)
+                    .addComponent(dlblNombreD))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombreD)
+                            .addComponent(dlblNombreD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNacimientoD)
+                            .addComponent(dlblNacimientoD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEdadD)
+                            .addComponent(dlblEdadD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCURPD)
+                            .addComponent(dlblCURPD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSexo)
+                            .addComponent(dlblSexoD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsuario)
+                            .addComponent(dlblUsuarioD))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                .addGap(89, 89, 89))
         );
+
+        tituloCaptura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tituloCaptura.setForeground(new java.awt.Color(204, 0, 51));
+        tituloCaptura.setText("Republica Amorosa! Amo a Melina-chan");
+
+        btnTomarFoto.setBackground(new java.awt.Color(255, 51, 51));
+        btnTomarFoto.setForeground(new java.awt.Color(255, 255, 255));
+        btnTomarFoto.setText("Capturar foto");
+        btnTomarFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTomarFotoActionPerformed(evt);
+            }
+        });
+
+        lblIndicacion.setText("Click sobre el cuadro azul para iniciar la camara");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jPanelWebCam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(tituloCaptura)
+                        .addContainerGap())
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnTomarFoto)
+                                .addGap(67, 67, 67))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(lblIndicacion)
+                                        .addGap(0, 74, Short.MAX_VALUE))
+                                    .addComponent(panelCamara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloCaptura)
+                    .addComponent(lblIndicacion))
+                .addGap(11, 11, 11)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jPanelWebCam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(panelCamara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnTomarFoto)
+                        .addGap(0, 7, Short.MAX_VALUE))))
         );
 
         jTabbedPane2.addTab("Captura de Foto", jPanel4);
@@ -517,8 +664,8 @@ public class Proyecto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2)
-                .addContainerGap())
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -608,6 +755,7 @@ public class Proyecto extends javax.swing.JFrame {
             
             System.out.println("Todo bien");
             jTabbedPane2.setEnabledAt(1, true);
+            llenarDatosPersonales();
         }
         else System.out.println("Error");
     }//GEN-LAST:event_guardarDatosActionPerformed
@@ -623,6 +771,12 @@ public class Proyecto extends javax.swing.JFrame {
     private void txtApMKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApMKeyReleased
         isValidoNombres(txtApM.getText(), lblValidarApM);
     }//GEN-LAST:event_txtApMKeyReleased
+
+    private void btnTomarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTomarFotoActionPerformed
+        Image foto = panelCamara.getImage();
+        ImageIcon fotoIcon = new ImageIcon(foto.getScaledInstance(140, 135, Image.SCALE_SMOOTH));
+        lblFoto.setIcon(fotoIcon);
+    }//GEN-LAST:event_btnTomarFotoActionPerformed
     
     private boolean validarCurp(){
         String regex = "[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}" +
@@ -767,6 +921,15 @@ public class Proyecto extends javax.swing.JFrame {
         if(rbtnMasculino.isSelected()) return "M";
         else return "F";
     }
+    private void llenarDatosPersonales(){
+        dlblNombreD.setText(objLicencia.getNombre() + " " + objLicencia.getApellidoPaterno()
+        + " " + objLicencia.getApellidoMaterno());
+        dlblEdadD.setText(objLicencia.getEdad() + "");
+        dlblCURPD.setText(objLicencia.getCURP());
+        dlblSexoD.setText(objLicencia.getSexo());
+        dlblUsuarioD.setText(objLicencia.getUsuario());
+    }
+    
     /*
     private boolean validarVacios(){
         boolean bandera = false;
@@ -822,6 +985,13 @@ public class Proyecto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.ButtonGroup Sexo;
+    private javax.swing.JButton btnTomarFoto;
+    private javax.swing.JLabel dlblCURPD;
+    private javax.swing.JLabel dlblEdadD;
+    private javax.swing.JLabel dlblNacimientoD;
+    private javax.swing.JLabel dlblNombreD;
+    private javax.swing.JLabel dlblSexoD;
+    private javax.swing.JLabel dlblUsuarioD;
     private com.toedter.calendar.JDateChooser fechaRegistro;
     private com.toedter.calendar.JDateChooser fechaVencimiento;
     private javax.swing.JButton guardarDatos;
@@ -852,12 +1022,20 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private JPanelWebCam.JPanelWebCam jPanelWebCam1;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblCURPD;
+    private javax.swing.JLabel lblEdadD;
+    private javax.swing.JLabel lblFoto;
+    private javax.swing.JLabel lblIndicacion;
+    private javax.swing.JLabel lblNacimientoD;
+    private javax.swing.JLabel lblNombreD;
+    private javax.swing.JLabel lblSexo;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblValidarApM;
     private javax.swing.JLabel lblValidarApP;
     private javax.swing.JLabel lblValidarContrasenia;
@@ -866,8 +1044,10 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JLabel lblValidarNacimiento;
     private javax.swing.JLabel lblValidarSexo;
     private javax.swing.JLabel lblValidarUsuario;
+    private JPanelWebCam.JPanelWebCam panelCamara;
     private javax.swing.JRadioButton rbtnMasculino;
     private javax.swing.JRadioButton rbtnMasculona;
+    private javax.swing.JLabel tituloCaptura;
     private javax.swing.JTextField txtApM;
     private javax.swing.JTextField txtApP;
     private javax.swing.JTextField txtCURP;
