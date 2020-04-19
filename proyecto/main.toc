@@ -3,10 +3,11 @@
 \contentsline {subsection}{\numberline {1.1}Requisitos para la pestaña datos}{2}%
 \contentsline {subsection}{\numberline {1.2}Requisitos para la pestaña Licencia}{2}%
 \contentsline {subsection}{\numberline {1.3}Requisitos de la pestaña Captura de foto}{3}%
+\contentsline {subsection}{\numberline {1.4}Requisitos del menú}{3}%
 \contentsline {section}{\numberline {2}Diseño de interfaz gráfica}{4}%
 \contentsline {subsection}{\numberline {2.1}Pestaña datos}{4}%
 \contentsline {subsection}{\numberline {2.2}Pestaña Licencia}{4}%
 \contentsline {subsection}{\numberline {2.3}Pestaña captura de foto}{4}%
-\contentsline {section}{\numberline {3}Desarrollo}{6}%
-\contentsline {subsection}{\numberline {3.1}Librerías usadas}{6}%
+\contentsline {section}{\numberline {3}Arquitectura}{6}%
+\contentsline {subsection}{\numberline {3.1}Diagrama de clases}{6}%
 \contentsline {section}{\numberline {4}Resultados}{6}%
