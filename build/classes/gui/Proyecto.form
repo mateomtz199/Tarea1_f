@@ -287,7 +287,7 @@
                               <Component id="lblValidarNacimiento" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="195" max="32767" attributes="0"/>
+                      <EmptySpace pref="224" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -408,7 +408,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="guardarDatos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Guardar"/>
+                <Property name="text" type="java.lang.String" value="Continuar"/>
                 <Property name="name" type="java.lang.String" value="btnGuardar" noResource="true"/>
               </Properties>
               <Events>
@@ -470,14 +470,14 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jTextField3" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <Component id="txtNoControl" min="-2" pref="80" max="-2" attributes="0"/>
                                           <EmptySpace pref="85" max="32767" attributes="0"/>
                                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jcbTipoLicencia" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -510,7 +510,7 @@
                           <Component id="lblValidarTelEmergencia" min="-2" max="-2" attributes="0"/>
                           <Component id="lblValidarTelefono" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="302" max="32767" attributes="0"/>
+                      <EmptySpace pref="324" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -520,9 +520,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNoControl" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbTipoLicencia" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -546,11 +546,11 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblValidarTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="lblValidarTelefono" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -560,7 +560,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnGuardarLicencia" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -571,14 +571,14 @@
                 <Property name="text" type="java.lang.String" value="NoControl:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="txtNoControl">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tipo de Licencia:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="jcbTipoLicencia">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
@@ -636,11 +636,6 @@
                 <Property name="text" type="java.lang.String" value="No Telefono:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTelefono">
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelefonoKeyTyped"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Observaciones:"/>
@@ -655,7 +650,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnGuardarLicencia">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Guardar"/>
+                <Property name="text" type="java.lang.String" value="Continuar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarLicenciaActionPerformed"/>
@@ -685,13 +680,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblValidarTelEmergencia">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel18"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblValidarTelefono">
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="txtTelefono">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel18"/>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="(###)###-####" subtype="-1" type="5"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -716,7 +712,10 @@
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bntGuardar" min="-2" pref="202" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
@@ -728,7 +727,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="lblIndicacion" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="66" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="67" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="panelCamara" max="32767" attributes="0"/>
                                       </Group>
@@ -749,14 +748,16 @@
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel5" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="panelCamara" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnTomarFoto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="69" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jPanel5" min="-2" pref="282" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="bntGuardar" pref="39" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -803,25 +804,59 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblNombreD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNacimientoD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEdadD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCURPD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblSexo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblNombreD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNacimientoD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblEdadD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblCURPD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dlblTipo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblregistroF" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lvlvencimientoF" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblContacto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="dlblUsuarioD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dlblSexoD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dlblCURPD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dlblEdadD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dlblNacimientoD" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dlblNombreD" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="dlblTelefonoEmergenca" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="dlblContactoEmergencia" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblFechaVencimiento" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblFechaReg" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblTipoLicencia" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblUsuarioD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblSexoD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblCURPD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblEdadD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblNacimientoD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblNombreD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="81" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jPanel6" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="lblNoControl" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="71" max="32767" attributes="0"/>
-                          <Component id="jPanel6" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -860,11 +895,39 @@
                                       <Component id="lblUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="dlblUsuarioD" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="dlblTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblTipoLicencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblregistroF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblFechaReg" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lvlvencimientoF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dlblFechaVencimiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jPanel6" pref="217" max="32767" attributes="0"/>
+                              <Component id="jPanel6" pref="174" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblContacto" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="dlblContactoEmergencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNoControl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                              <Component id="dlblTelefonoEmergenca" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1014,6 +1077,97 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="dlblTipo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tipo de licencia"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblregistroF">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fecha de registro"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lvlvencimientoF">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fecha de vencimiento"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblContacto">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Contacto de emergencia"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel18">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Telefono de emergencia"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="dlblTipoLicencia">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="11" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel19"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="dlblFechaReg">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="11" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel19"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="dlblFechaVencimiento">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="11" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel19"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="dlblContactoEmergencia">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="11" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel19"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="dlblTelefonoEmergenca">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="11" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel19"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblNoControl">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="18" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="1190420"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="tituloCaptura">
@@ -1045,6 +1199,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Click sobre el cuadro azul para iniciar la camara"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="bntGuardar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntGuardarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -24,7 +24,9 @@ public class Proyecto extends javax.swing.JFrame {
         Calendar c1 = Calendar.getInstance();
         fechaRegistro.setCalendar(c1);
         fechaVencimiento.setCalendar(calcularVencimiento(1));
-        //jTabbedPane2.setEnabledAt(1, false);
+        jTabbedPane2.setEnabledAt(1, false);
+        jTabbedPane2.setEnabledAt(2, false);
+        
     }
 
     /**
@@ -71,9 +73,9 @@ public class Proyecto extends javax.swing.JFrame {
         lblValidarContrasenia = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtNoControl = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jcbTipoLicencia = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jcbVigencia = new javax.swing.JComboBox<String>();
@@ -81,7 +83,6 @@ public class Proyecto extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         txtEmergencia = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         fechaRegistro = new com.toedter.calendar.JDateChooser();
         fechaVencimiento = new com.toedter.calendar.JDateChooser();
@@ -91,6 +92,7 @@ public class Proyecto extends javax.swing.JFrame {
         lblLimite = new javax.swing.JLabel();
         lblValidarTelEmergencia = new javax.swing.JLabel();
         lblValidarTelefono = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JFormattedTextField();
         jPanel4 = new javax.swing.JPanel();
         panelCamara = new JPanelWebCam.JPanelWebCam();
         jPanel5 = new javax.swing.JPanel();
@@ -108,9 +110,21 @@ public class Proyecto extends javax.swing.JFrame {
         dlblUsuarioD = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
+        dlblTipo = new javax.swing.JLabel();
+        lblregistroF = new javax.swing.JLabel();
+        lvlvencimientoF = new javax.swing.JLabel();
+        lblContacto = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        dlblTipoLicencia = new javax.swing.JLabel();
+        dlblFechaReg = new javax.swing.JLabel();
+        dlblFechaVencimiento = new javax.swing.JLabel();
+        dlblContactoEmergencia = new javax.swing.JLabel();
+        dlblTelefonoEmergenca = new javax.swing.JLabel();
+        lblNoControl = new javax.swing.JLabel();
         tituloCaptura = new javax.swing.JLabel();
         btnTomarFoto = new javax.swing.JButton();
         lblIndicacion = new javax.swing.JLabel();
+        bntGuardar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuSalir = new javax.swing.JMenuItem();
@@ -202,7 +216,7 @@ public class Proyecto extends javax.swing.JFrame {
 
         txtPass.setName("pwrUsuario"); // NOI18N
 
-        guardarDatos.setText("Guardar");
+        guardarDatos.setText("Continuar");
         guardarDatos.setName("btnGuardar"); // NOI18N
         guardarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,7 +362,7 @@ public class Proyecto extends javax.swing.JFrame {
                         .addComponent(txtFecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblValidarNacimiento)))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Datos", jPanel2);
@@ -357,7 +371,7 @@ public class Proyecto extends javax.swing.JFrame {
 
         jLabel11.setText("Tipo de Licencia:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Chófer", "Automovilista", "Motociclista" }));
+        jcbTipoLicencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Chófer", "Automovilista", "Motociclista" }));
 
         jLabel12.setText("Fecha de Registro:");
 
@@ -377,17 +391,11 @@ public class Proyecto extends javax.swing.JFrame {
 
         jLabel16.setText("No Telefono:");
 
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyTyped(evt);
-            }
-        });
-
         jLabel17.setText("Observaciones:");
 
         fechaVencimiento.setEnabled(false);
 
-        btnGuardarLicencia.setText("Guardar");
+        btnGuardarLicencia.setText("Continuar");
         btnGuardarLicencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarLicenciaActionPerformed(evt);
@@ -405,9 +413,11 @@ public class Proyecto extends javax.swing.JFrame {
 
         lblLimite.setText("200");
 
-        lblValidarTelEmergencia.setText("jLabel18");
-
-        lblValidarTelefono.setText("jLabel18");
+        try {
+            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###)###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -431,12 +441,12 @@ public class Proyecto extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel10)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNoControl, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                                     .addComponent(jLabel11)))
                             .addGap(7, 7, 7)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jcbTipoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel13)
                                     .addGap(18, 18, 18)
@@ -459,7 +469,7 @@ public class Proyecto extends javax.swing.JFrame {
                     .addComponent(lblLimite)
                     .addComponent(lblValidarTelEmergencia)
                     .addComponent(lblValidarTelefono))
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,9 +477,9 @@ public class Proyecto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNoControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbTipoLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -488,10 +498,10 @@ public class Proyecto extends javax.swing.JFrame {
                     .addComponent(lblValidarTelEmergencia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblValidarTelefono)))
+                        .addComponent(jLabel16)
+                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblValidarTelefono))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
@@ -499,7 +509,7 @@ public class Proyecto extends javax.swing.JFrame {
                     .addComponent(lblLimite))
                 .addGap(18, 18, 18)
                 .addComponent(btnGuardarLicencia)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Licencia", jPanel3);
@@ -579,6 +589,40 @@ public class Proyecto extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        dlblTipo.setText("Tipo de licencia");
+
+        lblregistroF.setText("Fecha de registro");
+
+        lvlvencimientoF.setText("Fecha de vencimiento");
+
+        lblContacto.setText("Contacto de emergencia");
+
+        jLabel18.setText("Telefono de emergencia");
+
+        dlblTipoLicencia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblTipoLicencia.setForeground(new java.awt.Color(255, 0, 0));
+        dlblTipoLicencia.setText("jLabel19");
+
+        dlblFechaReg.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblFechaReg.setForeground(new java.awt.Color(255, 0, 0));
+        dlblFechaReg.setText("jLabel19");
+
+        dlblFechaVencimiento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblFechaVencimiento.setForeground(new java.awt.Color(255, 0, 0));
+        dlblFechaVencimiento.setText("jLabel19");
+
+        dlblContactoEmergencia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblContactoEmergencia.setForeground(new java.awt.Color(255, 0, 0));
+        dlblContactoEmergencia.setText("jLabel19");
+
+        dlblTelefonoEmergenca.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dlblTelefonoEmergenca.setForeground(new java.awt.Color(255, 0, 0));
+        dlblTelefonoEmergenca.setText("jLabel19");
+
+        lblNoControl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNoControl.setForeground(new java.awt.Color(255, 0, 0));
+        lblNoControl.setText("1190420");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -586,23 +630,47 @@ public class Proyecto extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreD)
-                    .addComponent(lblNacimientoD)
-                    .addComponent(lblEdadD)
-                    .addComponent(lblCURPD)
-                    .addComponent(lblSexo)
-                    .addComponent(lblUsuario))
-                .addGap(54, 54, 54)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblNombreD)
+                                .addComponent(lblNacimientoD)
+                                .addComponent(lblEdadD)
+                                .addComponent(lblCURPD)
+                                .addComponent(lblSexo)
+                                .addComponent(lblUsuario)
+                                .addComponent(dlblTipo)
+                                .addComponent(lblregistroF)
+                                .addComponent(lvlvencimientoF))
+                            .addGap(52, 52, 52))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addComponent(lblContacto)
+                            .addGap(39, 39, 39)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addGap(41, 41, 41)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dlblUsuarioD)
-                    .addComponent(dlblSexoD)
-                    .addComponent(dlblCURPD)
-                    .addComponent(dlblEdadD)
-                    .addComponent(dlblNacimientoD)
-                    .addComponent(dlblNombreD))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(dlblTelefonoEmergenca)
+                        .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dlblContactoEmergencia)
+                            .addComponent(dlblFechaVencimiento)
+                            .addComponent(dlblFechaReg)
+                            .addComponent(dlblTipoLicencia)
+                            .addComponent(dlblUsuarioD)
+                            .addComponent(dlblSexoD)
+                            .addComponent(dlblCURPD)
+                            .addComponent(dlblEdadD)
+                            .addComponent(dlblNacimientoD)
+                            .addComponent(dlblNombreD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(lblNoControl)
+                                .addGap(35, 35, 35))))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -633,9 +701,31 @@ public class Proyecto extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblUsuario)
                             .addComponent(dlblUsuarioD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dlblTipo)
+                            .addComponent(dlblTipoLicencia))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblregistroF)
+                            .addComponent(dlblFechaReg))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lvlvencimientoF)
+                            .addComponent(dlblFechaVencimiento))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
-                .addGap(89, 89, 89))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblContacto)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dlblContactoEmergencia)
+                        .addComponent(lblNoControl)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(dlblTelefonoEmergenca))
+                .addGap(65, 65, 65))
         );
 
         tituloCaptura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -653,6 +743,13 @@ public class Proyecto extends javax.swing.JFrame {
 
         lblIndicacion.setText("Click sobre el cuadro azul para iniciar la camara");
 
+        bntGuardar.setText("Guardar");
+        bntGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntGuardarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -664,7 +761,9 @@ public class Proyecto extends javax.swing.JFrame {
                         .addComponent(tituloCaptura)
                         .addContainerGap())
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bntGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -675,7 +774,7 @@ public class Proyecto extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(lblIndicacion)
-                                        .addGap(0, 66, Short.MAX_VALUE))
+                                        .addGap(0, 67, Short.MAX_VALUE))
                                     .addComponent(panelCamara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -687,12 +786,14 @@ public class Proyecto extends javax.swing.JFrame {
                     .addComponent(lblIndicacion))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(panelCamara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnTomarFoto)
-                        .addGap(0, 69, Short.MAX_VALUE))))
+                        .addComponent(btnTomarFoto))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(bntGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("Captura de Foto", jPanel4);
@@ -761,15 +862,6 @@ public class Proyecto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCURPKeyTyped
 
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        // TODO add your handling code here:
-        char validar =evt.getKeyChar();
-        if(Character.isLetter(validar)){
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtTelefonoKeyTyped
-
     private void txtEmergenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmergenciaKeyTyped
         // TODO add your handling code here:
         char validar =evt.getKeyChar();
@@ -811,12 +903,11 @@ public class Proyecto extends javax.swing.JFrame {
             objLicencia.setUsuario(txtUsuario.getText());
             objLicencia.setContraseña(txtPass.getText());
             
-            
-            System.out.println("Todo bien");
+           
             jTabbedPane2.setEnabledAt(1, true);
             llenarDatosPersonales();
         }
-        else System.out.println("Error");
+        else System.out.println("Error: faltan llenar datos");
     }//GEN-LAST:event_guardarDatosActionPerformed
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
@@ -838,21 +929,51 @@ public class Proyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTomarFotoActionPerformed
 
     private void btnGuardarLicenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLicenciaActionPerformed
-        if(txtTelefono.getText().equals("")){
-            lblValidarTelefono.setForeground(Color.red);
-            lblValidarTelefono.setText("Introduce un numero de telefono");
-        }if(txtEmergencia.getText().equals("")){
-            lblValidarTelEmergencia.setForeground(Color.red);
-            lblValidarTelEmergencia.setText("Introduce nombre");
-        }else if(!txtTelefono.getText().equals("")){
-            lblValidarTelefono.setText("");
-        }else if(!txtEmergencia.getText().equals("")){
-            lblValidarTelEmergencia.setText("");
-        }else{
-            System.out.println("hasta ahora");
+        validarTelefono();
+        validarEmergencia();
+        if(validarTelefono() && validarEmergencia()){
+            objLicencia.setNoControl(txtNoControl.getText());
+            objLicencia.setTipoLicencia(jcbTipoLicencia.getSelectedItem().toString());
+            objLicencia.setFechaRegistro(fechaRegistro.getDate());
+            objLicencia.setFechaVencimiento(fechaVencimiento.getDate());
+            objLicencia.setVigencia(Integer.parseInt(jcbVigencia.getSelectedItem().toString()));
+            objLicencia.setTelEmergencia(txtEmergencia.getText());
+            objLicencia.setTelefono(txtTelefono.getText());
+            objLicencia.setObservaciones(jtaDescripcion.getText());
+            llenarDatosLicencia();
+            jTabbedPane2.setEnabledAt(2, true);
         }
     }//GEN-LAST:event_btnGuardarLicenciaActionPerformed
 
+    private boolean validarTelefono(){
+        
+        if(txtTelefono.getText().equals("")){
+            lblValidarTelefono.setForeground(Color.red);
+            lblValidarTelefono.setText("Introduce un numero de telefono");
+            return false;
+        }else{
+            lblValidarTelefono.setText("");
+            if(!txtTelefono.getText().matches("[0-9()-]{13}")){
+                lblValidarTelefono.setForeground(Color.red);
+                lblValidarTelefono.setText("Deben ser 10 numeros");
+                return false;
+            }else{
+                return true;
+            }
+            
+        }
+    }
+    private boolean validarEmergencia(){
+         if(txtEmergencia.getText().equals("")){
+            lblValidarTelEmergencia.setForeground(Color.red);
+            lblValidarTelEmergencia.setText("Introduce un numero de telefono");
+            return false;
+        }else{
+            lblValidarTelEmergencia.setText("");
+            return true;
+        }
+    }
+    
     private void jtaDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtaDescripcionKeyTyped
         if(jtaDescripcion.getText().length() > 200){
             lblLimite.setForeground(Color.red);
@@ -863,6 +984,10 @@ public class Proyecto extends javax.swing.JFrame {
             lblLimite.setText(200 - jtaDescripcion.getText().length() + "");
         }
     }//GEN-LAST:event_jtaDescripcionKeyTyped
+
+    private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bntGuardarActionPerformed
     private void eventosjcbVigencia(){
         jcbVigencia.addItemListener(new ItemListener() {
             @Override
@@ -1061,7 +1186,15 @@ public class Proyecto extends javax.swing.JFrame {
         DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
         dlblNacimientoD.setText(f.format(objLicencia.getNacimiento()));
     }
-    
+    private void llenarDatosLicencia(){
+        dlblTipoLicencia.setText(objLicencia.getTipoLicencia());
+        DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        dlblFechaReg.setText(f.format(objLicencia.getFechaRegistro()));
+        dlblFechaVencimiento.setText(f.format(objLicencia.getFechaVencimiento()));
+        dlblContactoEmergencia.setText(objLicencia.getTelEmergencia());
+        dlblTelefonoEmergenca.setText(objLicencia.getTelefono());
+        
+    }
     /*
     private boolean validarVacios(){
         boolean bandera = false;
@@ -1117,18 +1250,24 @@ public class Proyecto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.ButtonGroup Sexo;
+    private javax.swing.JButton bntGuardar;
     private javax.swing.JButton btnGuardarLicencia;
     private javax.swing.JButton btnTomarFoto;
     private javax.swing.JLabel dlblCURPD;
+    private javax.swing.JLabel dlblContactoEmergencia;
     private javax.swing.JLabel dlblEdadD;
+    private javax.swing.JLabel dlblFechaReg;
+    private javax.swing.JLabel dlblFechaVencimiento;
     private javax.swing.JLabel dlblNacimientoD;
     private javax.swing.JLabel dlblNombreD;
     private javax.swing.JLabel dlblSexoD;
+    private javax.swing.JLabel dlblTelefonoEmergenca;
+    private javax.swing.JLabel dlblTipo;
+    private javax.swing.JLabel dlblTipoLicencia;
     private javax.swing.JLabel dlblUsuarioD;
     private com.toedter.calendar.JDateChooser fechaRegistro;
     private com.toedter.calendar.JDateChooser fechaVencimiento;
     private javax.swing.JButton guardarDatos;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1138,6 +1277,7 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1156,15 +1296,17 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox<String> jcbTipoLicencia;
     private javax.swing.JComboBox<String> jcbVigencia;
     private javax.swing.JTextArea jtaDescripcion;
     private javax.swing.JLabel lblCURPD;
+    private javax.swing.JLabel lblContacto;
     private javax.swing.JLabel lblEdadD;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblIndicacion;
     private javax.swing.JLabel lblLimite;
     private javax.swing.JLabel lblNacimientoD;
+    private javax.swing.JLabel lblNoControl;
     private javax.swing.JLabel lblNombreD;
     private javax.swing.JLabel lblSexo;
     private javax.swing.JLabel lblUsuario;
@@ -1178,6 +1320,8 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JLabel lblValidarTelEmergencia;
     private javax.swing.JLabel lblValidarTelefono;
     private javax.swing.JLabel lblValidarUsuario;
+    private javax.swing.JLabel lblregistroF;
+    private javax.swing.JLabel lvlvencimientoF;
     private javax.swing.JMenu mnuAceraDe;
     private javax.swing.JMenuItem mnuSalir;
     private JPanelWebCam.JPanelWebCam panelCamara;
@@ -1190,9 +1334,10 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEmergencia;
     private com.toedter.calendar.JDateChooser txtFecha_nacimiento;
+    private javax.swing.JTextField txtNoControl;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPass;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JFormattedTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel validarNombre;
     // End of variables declaration//GEN-END:variables
