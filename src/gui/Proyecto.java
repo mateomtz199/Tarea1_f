@@ -743,6 +743,9 @@ public class Proyecto extends javax.swing.JFrame {
 
         lblIndicacion.setText("Click sobre el cuadro azul para iniciar la camara");
 
+        bntGuardar.setBackground(new java.awt.Color(0, 153, 51));
+        bntGuardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        bntGuardar.setForeground(new java.awt.Color(255, 255, 255));
         bntGuardar.setText("Guardar");
         bntGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -905,6 +908,7 @@ public class Proyecto extends javax.swing.JFrame {
             
            
             jTabbedPane2.setEnabledAt(1, true);
+            jTabbedPane2.setSelectedIndex(1);
             llenarDatosPersonales();
         }
         else System.out.println("Error: faltan llenar datos");
@@ -942,6 +946,7 @@ public class Proyecto extends javax.swing.JFrame {
             objLicencia.setObservaciones(jtaDescripcion.getText());
             llenarDatosLicencia();
             jTabbedPane2.setEnabledAt(2, true);
+            jTabbedPane2.setSelectedIndex(2);
         }
     }//GEN-LAST:event_btnGuardarLicenciaActionPerformed
 
