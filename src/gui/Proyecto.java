@@ -1,5 +1,6 @@
 package gui;
 
+import core.GuardarIO;
 import core.Licencia;
 import java.awt.Color;
 import java.awt.Image;
@@ -127,6 +128,7 @@ public class Proyecto extends javax.swing.JFrame {
         bntGuardar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jmnGuardar = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenuItem();
         mnuAceraDe = new javax.swing.JMenu();
 
@@ -794,14 +796,17 @@ public class Proyecto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnTomarFoto))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bntGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(23, 23, 23))
         );
 
         jTabbedPane2.addTab("Captura de Foto", jPanel4);
 
         jMenu1.setText("Inicio");
+
+        jmnGuardar.setText("Guardar");
+        jMenu1.add(jmnGuardar);
 
         mnuSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         mnuSalir.setText("Salir");
@@ -909,6 +914,7 @@ public class Proyecto extends javax.swing.JFrame {
            
             jTabbedPane2.setEnabledAt(1, true);
             jTabbedPane2.setSelectedIndex(1);
+            txtNoControl.setText(noControl());
             llenarDatosPersonales();
         }
         else System.out.println("Error: faltan llenar datos");
@@ -991,7 +997,7 @@ public class Proyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_jtaDescripcionKeyTyped
 
     private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
-        // TODO add your handling code here:
+        GuardarIO.guardar(objLicencia);
     }//GEN-LAST:event_bntGuardarActionPerformed
     private void eventosjcbVigencia(){
         jcbVigencia.addItemListener(new ItemListener() {
@@ -1007,6 +1013,16 @@ public class Proyecto extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    private String noControl(){
+        Calendar fecha = Calendar.getInstance();
+        int anio = fecha.get(Calendar.YEAR) - 2000;
+        int mes = fecha.get(Calendar.MONTH) + 1;
+        int dia = fecha.get(Calendar.DAY_OF_MONTH);
+        GuardarIO objG = new GuardarIO();
+        int consecutivo = objG.noControl();
+        if(mes < 10) return "" + consecutivo + "" + dia +"0" + mes + "" +  anio;
+        else return "" + consecutivo + "" + dia +"" + mes + "" +  anio;
     }
     private Calendar calcularVencimiento( int anios){
         Calendar cal = Calendar.getInstance();
@@ -1303,6 +1319,7 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JComboBox<String> jcbTipoLicencia;
     private javax.swing.JComboBox<String> jcbVigencia;
+    private javax.swing.JMenuItem jmnGuardar;
     private javax.swing.JTextArea jtaDescripcion;
     private javax.swing.JLabel lblCURPD;
     private javax.swing.JLabel lblContacto;

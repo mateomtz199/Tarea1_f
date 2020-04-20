@@ -1,12 +1,13 @@
 package core;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Yo
  */
-public class Licencia extends Persona{
+public class Licencia extends Persona implements Serializable{
     private String NoControl;
     private String tipoLicencia;
     private Date fechaRegistro;

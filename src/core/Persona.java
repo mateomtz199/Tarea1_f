@@ -1,13 +1,14 @@
 
 package core;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Yo
  */
-public class Persona {
+public class Persona implements Serializable{
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
