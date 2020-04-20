@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 
@@ -27,7 +28,7 @@ public class Proyecto extends javax.swing.JFrame {
         fechaVencimiento.setCalendar(calcularVencimiento(1));
         jTabbedPane2.setEnabledAt(1, false);
         jTabbedPane2.setEnabledAt(2, false);
-        
+        jmnGuardar.disable();
     }
 
     /**
@@ -131,6 +132,7 @@ public class Proyecto extends javax.swing.JFrame {
         jmnGuardar = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenuItem();
         mnuAceraDe = new javax.swing.JMenu();
+        jmnAbout = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -804,17 +806,36 @@ public class Proyecto extends javax.swing.JFrame {
         jTabbedPane2.addTab("Captura de Foto", jPanel4);
 
         jMenu1.setText("Inicio");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jmnGuardar.setText("Guardar");
         jMenu1.add(jmnGuardar);
 
         mnuSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         mnuSalir.setText("Salir");
+        mnuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSalirActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuSalir);
 
         jMenuBar1.add(jMenu1);
 
-        mnuAceraDe.setText("Acerca de");
+        mnuAceraDe.setText("Ayuda");
+
+        jmnAbout.setText("About");
+        jmnAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAboutActionPerformed(evt);
+            }
+        });
+        mnuAceraDe.add(jmnAbout);
+
         jMenuBar1.add(mnuAceraDe);
 
         setJMenuBar(jMenuBar1);
@@ -950,12 +971,23 @@ public class Proyecto extends javax.swing.JFrame {
             objLicencia.setTelEmergencia(txtEmergencia.getText());
             objLicencia.setTelefono(txtTelefono.getText());
             objLicencia.setObservaciones(jtaDescripcion.getText());
+            objLicencia.setNoControl(txtNoControl.getText());
             llenarDatosLicencia();
             jTabbedPane2.setEnabledAt(2, true);
+            jmnGuardar.enable();
             jTabbedPane2.setSelectedIndex(2);
         }
     }//GEN-LAST:event_btnGuardarLicenciaActionPerformed
 
+    private void guardar(){
+        GuardarIO.guardar(objLicencia);
+        JOptionPane.showMessageDialog(null, "Se guardo con exito");
+        vaciarCampos();
+        jTabbedPane2.setSelectedIndex(0);
+        jTabbedPane2.setEnabledAt(1, false);
+        jTabbedPane2.setEnabledAt(2, false);
+        jmnGuardar.disable();
+    }
     private boolean validarTelefono(){
         
         if(txtTelefono.getText().equals("")){
@@ -997,8 +1029,21 @@ public class Proyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_jtaDescripcionKeyTyped
 
     private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
-        GuardarIO.guardar(objLicencia);
+        guardar();
     }//GEN-LAST:event_bntGuardarActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        guardar();
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jmnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAboutActionPerformed
+        About objAbout = new About();
+        objAbout.setVisible(true);
+    }//GEN-LAST:event_jmnAboutActionPerformed
+
+    private void mnuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalirActionPerformed
+         System.exit(0);
+    }//GEN-LAST:event_mnuSalirActionPerformed
     private void eventosjcbVigencia(){
         jcbVigencia.addItemListener(new ItemListener() {
             @Override
@@ -1214,6 +1259,25 @@ public class Proyecto extends javax.swing.JFrame {
         dlblFechaVencimiento.setText(f.format(objLicencia.getFechaVencimiento()));
         dlblContactoEmergencia.setText(objLicencia.getTelEmergencia());
         dlblTelefonoEmergenca.setText(objLicencia.getTelefono());
+        lblNoControl.setText(objLicencia.getNoControl());
+    }
+    private void vaciarCampos(){
+        txtNombre.setText("");
+        txtApP.setText("");
+        txtApM.setText("");
+        txtEdad.setText("");
+        txtFecha_nacimiento.setDate(null);
+        txtCURP.setText("");
+        txtUsuario.setText("");
+        rbtnMasculino.setSelected(false);
+        rbtnMasculona.setSelected(false);
+        txtPass.setText("");
+        txtNoControl.setText("");
+        fechaRegistro.setDate(null);
+        fechaVencimiento.setDate(null);
+        txtEmergencia.setText("");
+        txtTelefono.setText("");
+        jtaDescripcion.setText("");
         
     }
     /*
@@ -1319,6 +1383,7 @@ public class Proyecto extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JComboBox<String> jcbTipoLicencia;
     private javax.swing.JComboBox<String> jcbVigencia;
+    private javax.swing.JMenuItem jmnAbout;
     private javax.swing.JMenuItem jmnGuardar;
     private javax.swing.JTextArea jtaDescripcion;
     private javax.swing.JLabel lblCURPD;

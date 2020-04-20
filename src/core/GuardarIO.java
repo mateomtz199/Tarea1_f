@@ -44,7 +44,6 @@ public class GuardarIO {
             fi = new FileInputStream(archivo);
             oi = new ObjectInputStream(fi);
             Licencia lic = (Licencia) oi.readObject();
-            licencias.add(lic);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GuardarIO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
